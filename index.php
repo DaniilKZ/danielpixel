@@ -67,7 +67,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty( $_GET['callback'] ) && !empt
 	echo json_encode(array('response' => 'Работает через встраиваемый виджет!' ));
 }
 
-?>
- 
-
 
