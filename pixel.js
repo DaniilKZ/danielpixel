@@ -142,14 +142,14 @@ if ("undefined" == typeof jQuery) throw new Error("Для работы видж�
                 $.cookie('sites', response[0].userip);
             }        
         }).fail(function(error){
-            console.log('fail', error.statusText);
+            console.log('Dpixel fail query');
         });
     }
     if (!$.cookie('sites')) {
         setSites(true);
     }
 
-    function setUniqs(cookies = false) {
+    function setUniqs() {
        $.ajax({
             type: 'GET',
             url: 'https://www.danielhaus.kz/pixel?func=setUniqs',
@@ -159,14 +159,14 @@ if ("undefined" == typeof jQuery) throw new Error("Для работы видж�
             dataType: 'jsonp',
             crossDomain: true,
         }).done(function(response){
-            console.log('done: ',response);
+            console.log('Dpixel done query');
         }).fail(function(error){
-            console.log('fail', error.statusText);
+            console.log('Dpixel fail query');
         });
     }
     setUniqs();
 
-    function setHistory(cookies = false) {
+    function setHistory() {
        $.ajax({
             type: 'GET',
             url: 'https://www.danielhaus.kz/pixel?func=setHistory',
@@ -176,9 +176,9 @@ if ("undefined" == typeof jQuery) throw new Error("Для работы видж�
             dataType: 'jsonp',
             crossDomain: true,
         }).done(function(response){
-            console.log('done: ',response);
+            console.log('Dpixel done query');
         }).fail(function(error){
-            console.log('fail', error.statusText);
+            console.log('Dpixel fail query');
         });
     }
     setHistory();
