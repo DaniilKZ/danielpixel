@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty( $_GET['callback'] ) && !empt
 	 switch ($_GET['func'] ) {
 	 	case 'setSites':
 
-			$insert = $conn->prepare('INSERT INTO `sites`(`sitename`, `userip`, `datetime`) VALUES (?,?,?)');
+			$db = $conn->prepare('INSERT INTO `sites`(`sitename`, `userip`, `datetime`) VALUES (?,?,?)');
 			$param = 'sss'; 
-			$insert->bind_param($param, $sitename_value, $userip_value, $datetime_value );  
+			$db->bind_param($param, $sitename_value, $userip_value, $datetime_value );  
 			
-			$insert->execute();
+			$db->execute();
 			$conn->close();
 
 			$_GET['userip'] = $userip_value;
@@ -31,28 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty( $_GET['callback'] ) && !empt
 			echo $_GET['callback']."([".json_encode( $_GET )."])"; 
 	 	break;
 	 	case 'setUniqs':
-			$insert = $conn->prepare('INSERT INTO `uniqs`(`userip`, `datetime`, `site`, `useragent`) 
+			$db = $conn->prepare('INSERT INTO `uniqs`(`userip`, `datetime`, `site`, `useragent`) 
 				VALUES (?,?,?,?)');
 
 			$param = 'ssss'; 
 
-			$insert->bind_param($param, $userip_value,  $datetime_value, $sitename_value, $useragent_value );  
+			$db->bind_param($param, $userip_value,  $datetime_value, $sitename_value, $useragent_value );  
 			
-			$insert->execute();
-			$result = $insert->get_result();
+			$db->execute();
+			$result = $db->get_result();
 			$conn->close();
 
 			echo $_GET['callback']."([".json_encode( $result )."])"; 
 	 	break;
 	 	case 'setHistory':
-			$insert = $conn->prepare('INSERT INTO `history`(`link`, `datetime`, `userip`) VALUES (?,?,?)');
+			$db = $conn->prepare('INSERT INTO `history`(`link`, `datetime`, `userip`) VALUES (?,?,?)');
 
 			$param = 'sss'; 
 
-			$insert->bind_param($param, $sitename_value, $datetime_value, $userip_value );  
+			$db->bind_param($param, $sitename_value, $datetime_value, $userip_value );  
 			
-			$insert->execute();
-			$result = $insert->get_result();
+			$db->execute();
+			$result = $db->get_result();
 			$conn->close();
 
 			echo $_GET['callback']."([".json_encode( $result )."])"; 
