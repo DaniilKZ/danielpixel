@@ -27,7 +27,7 @@
 
 ## Пример SQL запроса 
 
-Пример для вывода статистики по количеству просмотров страниц определенным пользователем. 
+Пример запроса для вывода статистики "подсчет общего числа посещений страниц" пользователеми. 
 
 ```sql
 SELECT COUNT(site) as visits, userip, site FROM `uniqs` GROUP BY site, userip order by visits DESC
@@ -38,4 +38,4 @@ SELECT COUNT(site) as visits, userip, site FROM `uniqs` GROUP BY site, userip or
 *Данный виджет использует плагин  [Jquery-Cookie](https://github.com/carhartl/jquery-cookie "Jquery-Cookie")*
 
 ## Автор
-[Daniiel](https://www.instagram.com/daniil.shabatko/ "Daniiel")
+©[Daniiel](https://www.instagram.com/daniil.shabatko/ "Daniiel")
